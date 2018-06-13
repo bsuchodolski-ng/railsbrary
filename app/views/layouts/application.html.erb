@@ -11,14 +11,13 @@
   </head>
 
   <body>
-    <div class="container">
       <% flash.each do |name, msg| %>
         <div class="notification">
           <button class="delete"></button>
           <%= msg %>
         </div>
       <% end %>
+      <%= render 'shared/navigation' %>
       <%= yield %>
-    </div>
   </body>
 </html>
