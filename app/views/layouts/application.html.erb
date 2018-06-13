@@ -13,7 +13,10 @@
   <body>
     <div class="container">
       <% flash.each do |name, msg| %>
-        <p><%= msg %></p>
+        <div class="notification">
+          <button class="delete"></button>
+          <%= msg %>
+        </div>
       <% end %>
       <%= yield %>
     </div>

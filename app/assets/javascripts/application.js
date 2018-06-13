@@ -14,3 +14,12 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+window.addEventListener('load', function() {
+    delete_buttons = Array.from(document.querySelectorAll('.notification > .delete'));
+    delete_buttons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        this.parentNode.remove()
+      });
+    });
+});
