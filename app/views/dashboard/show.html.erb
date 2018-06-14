@@ -1,4 +1,11 @@
-Yo, you are logged in and you are all set man.
-
-Click here to log out:
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<div class="columns">
+  <div class="column">
+    <%= render 'your_shelves' %>
+  </div>
+  <div class="column is-half">
+    <%= render 'blog' %>
+  </div>
+  <div class="column">
+    <%= render 'recommendations' %>
+  </div>
+</div>
