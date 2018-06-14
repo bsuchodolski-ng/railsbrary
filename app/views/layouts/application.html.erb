@@ -11,12 +11,7 @@
   </head>
 
   <body>
-      <% flash.each do |name, msg| %>
-        <div class="notification">
-          <button class="delete"></button>
-          <%= msg %>
-        </div>
-      <% end %>
+      <%= render 'shared/flash_messages' %>
       <%= render 'shared/navigation' %>
       <div class="content">
         <%= yield %>

@@ -3,7 +3,7 @@
 <div class="columns is-centered is-fullheight is-vcentered">
   <div class="column is-two-fifths card">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_explanation' %>
 
       <div class="field">
         <%= f.label :email, class: "label" %>

@@ -1,9 +1,6 @@
-<% if !flash.empty? %>
-  <div id="error_explanation" class="has-text-danger">
-    <ul>
-      <% flash.each do |_type, msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<% flash.each do |name, msg| %>
+  <div class="notification">
+    <button class="delete"></button>
+    <%= msg %>
   </div>
 <% end %>
