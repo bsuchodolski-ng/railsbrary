@@ -23,6 +23,13 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
+        <%= form_with url: '/' do |f| %>
+        <div class="control">
+          <%= f.text_field :search, class: 'input', placeholder: 'Search for books' %>
+        </div>
+        <% end %>
+      </div>
+      <div class="navbar-item">
         Profile
       </div>
       <div class="navbar-item">
