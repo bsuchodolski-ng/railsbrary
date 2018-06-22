@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'users', to: redirect('users/sign_up')
 
   get 'books/search', to: 'books#index'
+  resources :books, only: [:new, :create]
 end

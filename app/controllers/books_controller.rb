@@ -7,4 +7,8 @@ class BooksController < ApplicationController
     end
     @books = @books.where("title ILIKE ?", "%#{params[:term]}%")
   end
+
+  def new
+    @book = Book.new
+  end
 end
