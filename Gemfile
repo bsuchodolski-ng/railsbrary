@@ -34,6 +34,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+  gem 'site_prism'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
