@@ -25,4 +25,9 @@ feature 'Forgot password:' do
       .to have_content I18n.t('devise.passwords.send_paranoid_instructions')
   end
 
+  scenario 'can navigate to sign up page and log in page' do
+    expect(forgot_password_page).to have_sign_up_link
+    expect(forgot_password_page).to have_log_in_link
+  end
+
 end
