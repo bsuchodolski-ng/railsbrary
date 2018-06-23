@@ -9,7 +9,7 @@ class SignUpPage < SitePrism::Page
   element :password, '#user_password'
   element :password_confirmation, '#user_password_confirmation'
   element :submit_btn, '.actions > input[type="submit"]'
-  element :login_link, 'a[href="/users/sign_in"]'
+  element :log_in_link, 'a[href="/users/sign_in"]'
 
   def fill_in_form(email = nil, first_name = nil,
                    last_name = nil, password = nil,

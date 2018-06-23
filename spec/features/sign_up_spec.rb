@@ -3,6 +3,7 @@ require 'support/pages/sign_up_page'
 
 feature 'Sign up:' do
   let(:sign_up_page) { SignUpPage.new }
+  let(:user) { create(:user) }
 
   before do
     sign_up_page.load
@@ -51,6 +52,22 @@ feature 'Sign up:' do
     end
   end
 
+  context 'when there is existing user with the same email' do
+    scenario 'can\'t sign up with the same email' do
+      sign_up_page.fill_in_form(
+        user.email,
+        'John',
+        'Doe',
+        'password',
+        'password'
+      )
+      sign_up_page.submit_btn.click
+      within sign_up_page.error_explanation do
+        expect(sign_up_page).to have_content 'Email has already been taken'
+      end
+    end
+  end
+
   scenario 'can\'t sign up with too short password' do
     sign_up_page.fill_in_form(
       'user@example.com',
@@ -81,6 +98,6 @@ feature 'Sign up:' do
   end
 
   scenario 'can navigate to login page' do
-    expect(sign_up_page).to have_login_link
+    expect(sign_up_page).to have_log_in_link
   end
 end
