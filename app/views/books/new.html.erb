@@ -1,2 +1,23 @@
-<%= form_with model: @book do %>
-<% end %>
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h3 class="is-3">Add new book</h3>
+    <%= form_with model: @book, local: true do |f| %>
+      <%= render 'shared/error_explanation', object: f.object %>
+      <div class="field">
+        <%= f.label :title, class: "label" %>
+        <div class="control">
+          <%= f.text_field :title, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :desscription, class: "label" %>
+        <div class="control">
+          <%= f.text_area :description, class: "textarea", maxlength: "1000" %>
+        </div>
+      </div>
+
+      <%= f.submit "Add new book", class: "button is-primary is-fullwidth" %>
+    <% end %>
+  </div>
+</div>

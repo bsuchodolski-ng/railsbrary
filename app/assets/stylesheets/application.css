@@ -23,3 +23,7 @@ body {
 .content {
   flex: 1;
 }
+
+textarea {
+  resize: none !important;
+}
