@@ -1,8 +1,13 @@
-<% if !flash.empty? %>
+<% if !flash.empty? || object.present? && object.errors.any? %>
   <div id="error_explanation" class="has-text-danger">
     <ul>
       <% flash.each do |_type, msg| %>
         <li><%= msg %></li>
+      <% end %>
+      <% if object.present? && object.errors.any? %>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
