@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
-  let(:user) { create(:user) }
-  let(:book1) { create(:book, title: "Harry Potter pt 1") }
-  let(:book2) { create(:book, title: "Harry Potter pt 2") }
-  let(:book3) { create(:book, title: "Harry Potter pt 3") }
-  let(:book4) { create(:book, title: "Something different") }
+  let(:user)   { create(:user) }
+  let(:book1)  { create(:book, title: "Harry Potter pt 1") }
+  let(:book2)  { create(:book, title: "Harry Potter pt 2") }
+  let(:book3)  { create(:book, title: "Harry Potter pt 3") }
+  let(:book4)  { create(:book, title: "Something different") }
+  let(:author) { create(:author, name: "Henry Sienkiewicz") }
 
   before do
     sign_in(user)
@@ -19,7 +20,7 @@ RSpec.describe BooksController, type: :controller do
         end
 
         it 'returns only this one book' do
-          expect(assigns[:books]).to eq [ book4 ]
+          expect(assigns[:books]).to eq [book4]
         end
       end
 
@@ -31,7 +32,6 @@ RSpec.describe BooksController, type: :controller do
         it 'returns all books that match the term' do
           expect(assigns[:books]).to include(book1, book2, book3)
         end
-
       end
 
       context 'and it does not match any books' do
@@ -82,6 +82,45 @@ RSpec.describe BooksController, type: :controller do
         it 'returns empty array' do
           expect(assigns[:books]).to eq []
         end
+      end
+    end
+  end
+
+  describe 'POST #create' do
+    context 'when creating book with valid params' do
+      subject do
+        post :create, params: {
+          book: {
+            title: 'Quo Vadis',
+            description: 'Great book',
+            author_id: author.id
+          }
+        }
+      end
+
+      it 'creates a book' do
+        expect { subject }.to change(Book, :count).by(1)
+      end
+
+      it 'informs user that action was successful via flash' do
+        subject
+        expect(controller).to set_flash[:success]
+      end
+    end
+
+    context 'when creating book with invalid params' do
+      subject do
+        post :create, params: {
+          book: {
+            title: '',
+            description: 'Great book',
+            author_id: ''
+          }
+        }
+      end
+
+      it 'does not create a book' do
+        expect { subject }.not_to change(Book, :count)
       end
     end
   end
