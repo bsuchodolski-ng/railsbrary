@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users', to: redirect('users/sign_up')
 
+  resources :books, only: [:new, :show]
   get 'books/search', to: 'books#index'
-  resources :books, only: [:new]
   post 'books/new', to: 'books#create', as: 'books'
+
+  post 'authors/new', to: 'authors#create'
 end

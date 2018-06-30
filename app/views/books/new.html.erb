@@ -4,6 +4,11 @@
     <%= form_with model: @book, local: true do |f| %>
       <%= render 'shared/error_explanation', object: f.object %>
       <div class="field">
+        <%= f.label :author, class: "label" %>
+        <%= f.select :author_id, Author.all.pluck(:name, :id), {}, { class: 'selectize' } %>
+      </div>
+
+      <div class="field">
         <%= f.label :title, class: "label" %>
         <div class="control">
           <%= f.text_field :title, class: "input" %>
@@ -11,7 +16,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :desscription, class: "label" %>
+        <%= f.label :description, class: "label" %>
         <div class="control">
           <%= f.text_area :description, class: "textarea", maxlength: "1000" %>
         </div>
