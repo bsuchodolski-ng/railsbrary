@@ -19,4 +19,10 @@
   <div class="column" id="books">
     <%= render @books %>
   </div>
+  <div class="column is-one-fifth">
+    <p>
+      <span class="help">Haven't found what you're looking for?</span>
+      <%= link_to 'Add new book', books_path, class: 'help is-primary' %>
+    </p>
+  </div>
 </div>
