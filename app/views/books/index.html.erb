@@ -1,7 +1,7 @@
 <div class="columns">
   <div class="column is-one-quarter">
     <h4 class="title is-4">Advanced search</h4>
-    <%= form_with url: books_search_path, method: :get do |f| %>
+    <%= form_with url: books_path, method: :get do |f| %>
     <div class="control">
       <div class="field">
         <%= label_tag(:term, 'Title', class: 'label is-small') %>

@@ -23,8 +23,8 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
-        <%= form_with url: books_search_path, method: :get, local: true do |f| %>
-        <%= link_to 'Advanced search', books_search_path, class: 'help is-primary' %>
+        <%= form_with url: books_path, method: :get, local: true do |f| %>
+        <%= link_to 'Advanced search', books_path, class: 'help is-primary' %>
         <div class="control">
           <%= f.text_field :term, class: 'input', placeholder: 'Search for books' %>
         </div>
