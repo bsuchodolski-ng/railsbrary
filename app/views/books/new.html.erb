@@ -15,7 +15,12 @@
         </div>
       </div>
 
-      <%= f.file_field :cover_image %>
+      <div class="field">
+        <%= f.label :cover_image, class: "label" %>
+        <div class="control">
+          <%= f.file_field :cover_image %>
+        </div>
+      </div>
 
       <div class="field">
         <%= f.label :description, class: "label" %>
