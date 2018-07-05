@@ -7,6 +7,8 @@ RSpec.describe BooksController, type: :controller do
   let(:book3)  { create(:book, title: "Harry Potter pt 3") }
   let(:book4)  { create(:book, title: "Something different") }
   let(:author) { create(:author, name: "Henry Sienkiewicz") }
+  let(:cover_image) { fixture_file_upload('files/cover.jpg', 'image/jpg') }
+  let(:invalid_cover_image) { fixture_file_upload('files/invalid.pdf', 'application/pdf') }
 
   before do
     sign_in(user)
@@ -120,6 +122,47 @@ RSpec.describe BooksController, type: :controller do
       end
 
       it 'does not create a book' do
+        expect { subject }.not_to change(Book, :count)
+      end
+    end
+
+    context 'when creating book with cover image' do
+      context 'when file has proper format' do
+        subject do
+          post :create, params: {
+            book: {
+              title: 'Book with cover',
+              description: 'Great book',
+              author_id: author.id,
+              cover_image: cover_image
+            }
+          }
+        end
+
+        it 'creates a book' do
+          expect { subject }.to change(Book, :count).by(1)
+        end
+
+        it 'book has image file attached' do
+          subject
+          expect(Book.last.cover_image).not_to be nil
+        end
+      end
+    end
+
+    context 'when file has improper format' do
+      subject do
+        post :create, params: {
+          book: {
+            title: 'Book with cover',
+            description: 'Great book',
+            author_id: author.id,
+            cover_image: invalid_cover_image
+          }
+        }
+      end
+
+      it 'does not creates a book' do
         expect { subject }.not_to change(Book, :count)
       end
     end

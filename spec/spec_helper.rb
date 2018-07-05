@@ -93,4 +93,11 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # Clean up upload folder after testing
+  config.after(:each) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test"])
+    end
+  end
 end
