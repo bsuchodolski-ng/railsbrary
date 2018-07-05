@@ -17,6 +17,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.cover_image = params[:book][:cover_image]
     if @book.save
       flash[:success] = 'Book successfully created'
       redirect_to @book
@@ -28,6 +29,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :description, :author_id)
+    params.require(:book).permit(:title, :description, :author_id, :cover_image)
   end
 end
