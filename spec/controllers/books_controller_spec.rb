@@ -86,6 +86,28 @@ RSpec.describe BooksController, type: :controller do
         end
       end
     end
+
+    context 'when there are more than 25 books' do
+      before { 30.times { create(:book) } }
+
+      context 'when there is no page param in request' do
+        subject { get :index }
+
+        it 'returns paginated books' do
+          subject
+          expect(assigns[:books]).to eq Book.first(25)
+        end
+      end
+
+      context 'when there user requests 2nd page' do
+        subject { get :index, params: {page: 2} }
+
+        it 'returns paginated books' do
+          subject
+          expect(assigns[:books]).to eq Book.last(5)
+        end
+      end
+    end
   end
 
   describe 'POST #create' do
