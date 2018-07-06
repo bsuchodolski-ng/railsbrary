@@ -1,0 +1,21 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns">
+      <div class="column">
+        <form class="is-pulled-right">
+        <%= image_tag(@book.cover_image.url, size: "200") %>
+      </form>
+      </div>
+      <div class="column">
+        <h2 class="title is-2"><%= @book.title %></h2>
+        <h5 class="subtitle">by <%= @book.author.name %></h2>
+        <p>Published: <%= @book.published_at.present? ? @book.published_at.strftime("%Y-%m-%d") : '-' %></p>
+        <p>Rating. Rating count</p>
+        <p><%= @book.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-quarter">
+    Similar books
+  </div>
+</div>

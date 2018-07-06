@@ -24,6 +24,9 @@ class CoverImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+    def default_url(*args)
+      ActionController::Base.helpers.asset_path("fallback/default.jpg")
+    end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
