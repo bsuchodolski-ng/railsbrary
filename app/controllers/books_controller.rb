@@ -5,7 +5,8 @@ class BooksController < ApplicationController
     if params[:filters].present?
       @books = @books.with_author(params[:filters][:author])
     end
-    @books = @books.where("title ILIKE ?", "%#{params[:term]}%")
+    @books = @books.where("title ILIKE ?", "%#{params[:term]}%").page params[:page]
+
   end
 
   def new

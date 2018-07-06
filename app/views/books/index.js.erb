@@ -1,2 +1,2 @@
 books = document.querySelector('#books')
-books.innerHTML = '<%= j render @books %>'
+books.innerHTML = '<%= j render @books %><%= j paginate @books %>'
