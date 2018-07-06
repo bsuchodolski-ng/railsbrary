@@ -1,1 +1,13 @@
-Book: <%= book.title %>
+
+  <%= link_to book_url(book)  do %>
+  <div class="box">
+    <div class="columns">
+      <div class="column"><%= image_tag(book.cover_image.url, size: "200") %></div>
+      <div class="column">
+        <h5 class="title is-5"><%= book.title %></h2>
+        <h6 class="subtitle">by <%= book.author.name %></h2>
+        <p><%= book.description.truncate(250) if book.description.present? %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
