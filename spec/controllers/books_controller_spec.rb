@@ -100,7 +100,7 @@ RSpec.describe BooksController, type: :controller do
       end
 
       context 'when there user requests 2nd page' do
-        subject { get :index, params: {page: 2} }
+        subject { get :index, params: { page: 2 } }
 
         it 'returns paginated books' do
           subject
