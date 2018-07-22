@@ -3,7 +3,9 @@ class BooksController < ApplicationController
   def index
     @books = Book.where(nil)
     if params[:filters].present?
-      @books = @books.with_author(params[:filters][:author])
+      params[:filters].each do  |key, value|
+        @books = @books.public_send(key, value) if value.present?
+      end
     end
     @books = @books.where('title ILIKE ?', "%#{params[:term]}%")
                    .page(params[:page])
@@ -20,7 +22,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.published_at = parsed_date
+    @book.published_at = parse_date(book_params[:published_at])
     @book.cover_image = book_params[:cover_image]
     if @book.save
       flash[:success] = 'Book successfully created'
@@ -36,9 +38,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :description, :author_id, :cover_image, :published_at)
   end
 
-  def parsed_date
+  def parse_date(date)
     begin
-      DateTime.strptime(book_params[:published_at], "%Y-%m-%d")
+      DateTime.strptime(date, "%Y-%m-%d")
     rescue
       nil
     end

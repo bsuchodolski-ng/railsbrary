@@ -62,7 +62,7 @@ RSpec.describe BooksController, type: :controller do
         before do
           get :index, params: {
             filters: {
-              author: book4.author.name
+              with_author: book4.author.name
             }
           }
         end
@@ -76,7 +76,7 @@ RSpec.describe BooksController, type: :controller do
         before do
           get :index, params: {
             filters: {
-              author: 'Unknown Author For Sure'
+              with_author: 'Unknown Author For Sure'
             }
           }
         end

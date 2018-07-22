@@ -9,8 +9,18 @@
       </div>
       <div class="field">
         <%= label_tag(:filters, 'Author', class: 'label is-small') %>
-        <%= f.text_field :author, class: 'input is-small', name: 'filters[author]',
-          value: (params[:filters][:author] if params[:filters].present?) %>
+        <%= f.text_field :with_author, class: 'input is-small', name: 'filters[with_author]',
+          value: (params[:filters][:with_author] if params[:filters].present?) %>
+      </div>
+      <div class="field">
+        <%= label_tag(:filters, 'Published after', class: 'label is-small') %>
+        <%= f.text_field :published_after, class: 'input is-small datepicker', name: 'filters[published_after]',
+          value: (params[:filters][:published_after] if params[:filters].present?) %>
+      </div>
+      <div class="field">
+        <%= label_tag(:filters, 'Published before', class: 'label is-small') %>
+        <%= f.text_field :published_before, class: 'input is-small datepicker', name: 'filters[published_before]',
+          value: (params[:filters][:published_before] if params[:filters].present?) %>
       </div>
       <%= submit_tag 'Search', class: 'button is-small is-primary' %>
     </div>
