@@ -15,14 +15,16 @@
 //= require activestorage
 //= require turbolinks
 //= require selectize
+//= require @chenfengyuan/datepicker/dist/datepicker.min
 //= require_tree .
 
-window.addEventListener('load', function() {
+window.addEventListener('turbolinks:load', function() {
     delete_buttons = Array.from(document.querySelectorAll('.notification > .delete'));
     delete_buttons.forEach(function(btn) {
       btn.addEventListener("click", function() {
         this.parentNode.remove()
       });
+
     });
 
     // Get all "navbar-burger" elements
@@ -46,4 +48,9 @@ window.addEventListener('load', function() {
         });
       });
     }
+
+    $('.datepicker').datepicker({
+      autoHide: true,
+      format: 'yyyy-mm-dd'
+    });
 });

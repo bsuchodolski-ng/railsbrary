@@ -2,8 +2,8 @@
   "name": "railsbrary",
   "private": true,
   "dependencies": {
-    "bulma": "^0.7.1",
-    "bulma-calendar": "^4.0.1"
+    "@chenfengyuan/datepicker": "^1.0.0-beta",
+    "bulma": "^0.7.1"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",

@@ -188,5 +188,51 @@ RSpec.describe BooksController, type: :controller do
         expect { subject }.not_to change(Book, :count)
       end
     end
+
+    context 'when creating book with published date' do
+      context 'when published date has proper format' do
+        subject do
+          post :create, params: {
+            book: {
+              title: 'Book with published date',
+              description: 'Great book',
+              author_id: author.id,
+              published_at: '2018-07-12'
+            }
+          }
+        end
+
+        it 'creates a book' do
+          expect { subject }.to change(Book, :count).by(1)
+        end
+
+        it 'book has published date' do
+          subject
+          expect(Book.last.published_at).not_to be nil
+        end
+      end
+
+      context 'when published date has invalid format' do
+        subject do
+          post :create, params: {
+            book: {
+              title: 'Book with published date',
+              description: 'Great book',
+              author_id: author.id,
+              published_at: 'random_string'
+            }
+          }
+        end
+
+        it 'creates a book' do
+          expect { subject }.to change(Book, :count).by(1)
+        end
+
+        it 'book has not published date' do
+          subject
+          expect(Book.last.published_at).to be nil
+        end
+      end
+    end
   end
 end

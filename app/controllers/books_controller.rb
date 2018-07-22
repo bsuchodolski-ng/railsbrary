@@ -20,7 +20,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.cover_image = params[:book][:cover_image]
+    @book.published_at = parsed_date
+    @book.cover_image = book_params[:cover_image]
     if @book.save
       flash[:success] = 'Book successfully created'
       redirect_to @book
@@ -32,6 +33,14 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :description, :author_id, :cover_image)
+    params.require(:book).permit(:title, :description, :author_id, :cover_image, :published_at)
+  end
+
+  def parsed_date
+    begin
+      DateTime.strptime(book_params[:published_at], "%Y-%m-%d")
+    rescue
+      nil
+    end
   end
 end

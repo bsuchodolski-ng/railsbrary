@@ -13,6 +13,7 @@
  *= require selectize
  *= require selectize.default
  *= require bulma/bulma
+ *= require @chenfengyuan/datepicker/dist/datepicker.min
  *= require_tree .
  *= require_self
  */
