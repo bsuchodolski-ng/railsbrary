@@ -10,7 +10,7 @@
         <h2 class="title is-2"><%= @book.title %></h2>
         <h5 class="subtitle">by <%= @book.author.name %></h2>
         <p>Published: <%= @book.published_at.present? ? @book.published_at.strftime("%Y-%m-%d") : '-' %></p>
-        <%= render 'book_rating' %>
+        <div class="book_rating"><%= render 'book_rating' %></div>
         <br>
         <div class="description"><%= @book.description %></div>
       </div>
