@@ -1,0 +1,8 @@
+book_rating = "<%= j render 'books/book_rating' %>"
+book_rating_div = document.querySelector('div.book_rating')
+
+book_rating_div.innerHTML = book_rating
+
+$("select[name='book_rating[rating]']").on("change", function() {
+  $(this).parents("form:first").find("input[type='submit']").click()
+})
