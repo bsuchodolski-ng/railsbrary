@@ -1,4 +1,4 @@
-class BookRatingsController < ApplicationController
+class BookRatingsController < UsersBaseController
 
   def create
     @book_rating = BookRating.new(book_rating_params)

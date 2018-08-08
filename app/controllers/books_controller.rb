@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+class BooksController < UsersBaseController
 
   def index
     @books = Book.where(nil)

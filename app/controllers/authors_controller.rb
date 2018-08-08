@@ -1,4 +1,4 @@
-class AuthorsController < ApplicationController
+class AuthorsController < UsersBaseController
 
   def create
     @author = Author.new(author_params)
