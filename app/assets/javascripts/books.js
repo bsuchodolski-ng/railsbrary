@@ -16,6 +16,6 @@ document.addEventListener('turbolinks:load', function() {
   });
 
   $("select[name='book_rating[rating]']").on("change", function() {
-    $(this).parents("form:first").submit();
+    $(this).parents("form:first").find("input[type='submit']").click()
   })
 })
