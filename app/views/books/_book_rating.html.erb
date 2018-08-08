@@ -1,0 +1,14 @@
+<div class="book_rating">
+  <p>Rating: 5.57 (250 votes)</p>
+  <p>
+    <%= form_for @book_rating, remote: true do |f| %>
+      <%= f.label :rating, 'Your rating' %>
+      <%= f.select :rating,
+        options_for_select(1..5, selected: @book_rating.rating),
+        include_blank: "Not rated" %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :book_id %>
+      <%= f.submit style: 'display: none' %>
+    <% end %>
+  </p>
+</div>
