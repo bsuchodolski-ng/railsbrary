@@ -10,7 +10,15 @@
         <h2 class="title is-2"><%= @book.title %></h2>
         <h5 class="subtitle">by <%= @book.author.name %></h2>
         <p>Published: <%= @book.published_at.present? ? @book.published_at.strftime("%Y-%m-%d") : '-' %></p>
-        <p>Rating. Rating count</p>
+        <p>Rating: 5.57 (250 votes)</p>
+        <p>
+          <%= form_for @book_rating  do |f| %>
+            <%= f.label :rating, 'Your rating' %>
+            <%= f.select :rating,
+              options_for_select(1..5, selected: @book_rating.rating),
+              include_blank: "Not rated" %>
+          <% end %>
+        </p>
         <p><%= @book.description %></p>
       </div>
     </div>

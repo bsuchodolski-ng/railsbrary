@@ -14,4 +14,8 @@ document.addEventListener('turbolinks:load', function() {
       })
     }
   });
+
+  $("select[name='book_rating[rating]']").on("change", function() {
+    $(this).parents("form:first").submit();
+  })
 })
