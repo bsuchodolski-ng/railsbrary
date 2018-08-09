@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_202931) do
+ActiveRecord::Schema.define(version: 2018_08_09_162716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_202931) do
     t.text "description"
     t.string "cover_image"
     t.integer "book_ratings_count", default: 0
-    t.float "average_rating"
+    t.float "average_rating", default: 0.0
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
