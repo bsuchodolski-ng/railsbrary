@@ -1,4 +1,5 @@
-  <p>Rating: 5.57 (250 votes)</p>
+  <p>Rating: <%= @book_rating.book.average_rating.round(2) %>
+    (<%= pluralize(@book_rating.book.book_ratings.size, 'vote') %>)</p>
   <p>
     <%= form_for @book_rating, remote: true do |f| %>
       <%= f.label :rating, 'Your rating' %>
