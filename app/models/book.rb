@@ -12,6 +12,6 @@ class Book < ApplicationRecord
   scope :published_before, lambda { |end_date| where("published_at <= ?", end_date ) }
 
   def recalculate_average_rating
-    update_attributes!(average_rating: book_ratings.average(:rating))
+    update_attributes!(average_rating: book_ratings.average(:rating).to_f)
   end
 end
