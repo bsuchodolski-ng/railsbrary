@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe AuthorsController, type: :controller do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in(user)
+  end
+
   describe 'POST #create' do
     context 'when author has a valid name' do
       context 'and standard request is made' do
