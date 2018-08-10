@@ -13,6 +13,6 @@ class BookRating < ApplicationRecord
   private
 
   def recalculate_book_average_rating
-    book.recalculate_average_rating
+    book&.recalculate_average_rating
   end
 end
