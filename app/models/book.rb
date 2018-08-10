@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :author
   has_many :book_ratings, dependent: :destroy
+  has_many :book_reviews, dependent: :destroy
 
   mount_uploader :cover_image, CoverImageUploader
 
