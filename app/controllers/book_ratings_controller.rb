@@ -2,12 +2,14 @@ class BookRatingsController < UsersBaseController
 
   def create
     @book_rating = BookRating.new(book_rating_params)
+    authorize @book_rating
     @book_rating.save
   end
 
   def update
     @book_rating = BookRating.find_by(book_id: book_rating_params[:book_id],
                                       user_id: book_rating_params[:user_id])
+    authorize @book_rating
     if book_rating_params[:rating].present?
       @book_rating.update(book_rating_params)
       @book_rating.save
