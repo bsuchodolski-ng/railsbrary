@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :book_review do
-    body 'Great book. Enjoyed it very much.'
+    body 'Great book'
     book
     user
   end
