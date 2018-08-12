@@ -19,6 +19,7 @@ class BooksController < UsersBaseController
   def show
     @book = Book.find(params[:id])
     @book_rating = @book.book_ratings.find_by_user_id(current_user.id) || @book.book_ratings.new(user: current_user)
+    @current_user_book_review = @book.book_reviews.find_by_user_id(current_user.id) || @book.book_reviews.new(user: current_user)
   end
 
   def create

@@ -1,0 +1,9 @@
+<% if review.user == current_user %>
+  <% if review.new_record? %>
+    <p>You have not review this book yet. <a class="create_review">Create review</a>.</p>
+  <% else %>
+    <%= render 'review_body', review: review %>
+  <% end %>
+<% else %>
+  <%= render 'review_body', review: review %>
+<% end %>

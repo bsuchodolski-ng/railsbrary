@@ -1,0 +1,10 @@
+<h6 class="is-6">
+  <%= review.user.first_name %>
+  <%= "rated it #{review.rating}" unless review.rating.nil? %>
+  <% if review.user == current_user %>
+    (<a>Edit</a> | <a>Delete</a>)
+  <% end %>
+</h6>
+<p>
+  <%= review.body %>
+<p>

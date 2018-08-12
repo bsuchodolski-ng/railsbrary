@@ -1,0 +1,15 @@
+<div class="columns is-centered">
+  <div class="column is-three-fifths reviews">
+    <h3 class="is-3">Reviews</h3>
+    <div class="user_review">
+      <h4 class="is_4">User review</h4>
+      <%= render 'review', review: @current_user_book_review %>
+    </div>
+    <div class="other_users_reviews">
+      <h4 class="is_4">Other users review</h4>
+      <% @book.book_reviews.where.not(user_id: current_user.id).each do |review| %>
+        <%= render 'review', review: review %>
+      <% end %>
+    </div>
+  </div>
+</div>
