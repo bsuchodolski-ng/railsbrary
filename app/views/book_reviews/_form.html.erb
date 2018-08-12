@@ -1,0 +1,14 @@
+<%= form_for @book_review, url: book_book_reviews_path, remote: true do |f| %>
+  <%= f.label :body, "Your review" %>
+  <div class="control">
+    <%= f.text_area :body, class: 'textarea' %>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit 'Save', class: 'button is-primary' %>
+    </div>
+    <div class="control">
+      <%= button_tag 'Cancel', type: 'button', class: 'button', onclick: 'close_review_form()' %>
+    </div>
+  </div>
+<% end %>

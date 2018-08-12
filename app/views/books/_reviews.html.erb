@@ -3,7 +3,9 @@
     <h3 class="is-3">Reviews</h3>
     <div class="user_review">
       <h4 class="is_4">User review</h4>
-      <%= render 'review', review: @current_user_book_review %>
+      <div class="review">
+        <%= render 'review', review: @current_user_book_review %>
+      </div>
     </div>
     <div class="other_users_reviews">
       <h4 class="is_4">Other users review</h4>

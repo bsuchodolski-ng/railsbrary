@@ -1,6 +1,6 @@
 <% if review.user == current_user %>
   <% if review.new_record? %>
-    <p>You have not review this book yet. <a class="create_review">Create review</a>.</p>
+    <p>You have not review this book yet. <%= link_to 'Create review', new_book_book_review_path(@book), remote: true %>.</p>
   <% else %>
     <%= render 'review_body', review: review %>
   <% end %>

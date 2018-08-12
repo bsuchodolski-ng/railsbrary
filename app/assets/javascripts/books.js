@@ -19,3 +19,8 @@ document.addEventListener('turbolinks:load', function() {
     $(this).parents("form:first").find("input[type='submit']").click()
   })
 })
+
+function close_review_form () {
+  review_div = document.querySelector(".user_review > .review")
+  review_div.innerHTML = user_review
+}
