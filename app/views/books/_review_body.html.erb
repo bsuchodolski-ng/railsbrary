@@ -2,7 +2,8 @@
   <%= review.user.first_name %>
   <%= "rated it #{review.rating}" unless review.rating.nil? %>
   <% if review.user == current_user %>
-    (<%= link_to 'Edit', edit_book_book_review_path(review.book, review), remote: true %> | <a>Delete</a>)
+    (<%= link_to 'Edit', edit_book_book_review_path(review.book, review), remote: true %> |
+    <%= link_to 'Delete', book_book_review_path(review.book, review), method: :delete, remote: true %>)
   <% end %>
 </h6>
 <p>

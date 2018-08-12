@@ -17,6 +17,12 @@ class BookReviewsController < ApplicationController
     render 'edit' unless @book_review.update(book_review_params)
   end
 
+  def destroy
+    @book_review = BookReview.find(params[:id])
+    @book_review.destroy
+    @book_review = BookReview.new(book_id: params[:book_id], user_id: current_user.id)
+  end
+
   private
 
   def book_review_params
