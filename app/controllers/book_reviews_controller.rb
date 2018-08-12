@@ -5,11 +5,16 @@ class BookReviewsController < ApplicationController
 
   def create
     @book_review = BookReview.new(book_review_params)
-    if @book_review.save
-      render
-    else
-      render 'new'
-    end
+    render 'new' unless @book_review.save
+  end
+
+  def edit
+    @book_review = BookReview.find(params[:id])
+  end
+
+  def update
+    @book_review = BookReview.find(params[:id])
+    render 'edit' unless @book_review.update(book_review_params)
   end
 
   private

@@ -1,0 +1,6 @@
+form = "<%= j render 'form' %>"
+review_div = document.querySelector(".user_review > .review")
+<% if @book_review.errors.empty? %>
+  user_review = review_div.innerHTML
+<% end %>
+review_div.innerHTML = form

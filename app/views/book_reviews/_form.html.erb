@@ -1,4 +1,4 @@
-<%= form_for @book_review, url: book_book_reviews_path, remote: true do |f| %>
+<%= form_for @book_review, url: [@book_review.book, @book_review], remote: true do |f| %>
   <%= render 'shared/error_explanation', object: f.object %>
   <%= f.label :body, "Your review" %>
   <div class="control">
