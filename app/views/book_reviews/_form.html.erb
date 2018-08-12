@@ -1,4 +1,5 @@
 <%= form_for @book_review, url: book_book_reviews_path, remote: true do |f| %>
+  <%= render 'shared/error_explanation', object: f.object %>
   <%= f.label :body, "Your review" %>
   <div class="control">
     <%= f.text_area :body, class: 'textarea' %>
@@ -7,6 +8,8 @@
     <div class="control">
       <%= f.submit 'Save', class: 'button is-primary' %>
     </div>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :book_id %>
     <div class="control">
       <%= button_tag 'Cancel', type: 'button', class: 'button', onclick: 'close_review_form()' %>
     </div>
