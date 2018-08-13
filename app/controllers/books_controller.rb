@@ -20,6 +20,7 @@ class BooksController < UsersBaseController
     @book = Book.find(params[:id])
     @book_rating = @book.book_ratings.find_by_user_id(current_user.id) || @book.book_ratings.new(user: current_user)
     @current_user_book_review = @book.book_reviews.find_by_user_id(current_user.id) || @book.book_reviews.new(user: current_user)
+    @other_users_reviews = @book.book_reviews.where.not(user_id: current_user.id).page(params[:page]).per(5)
   end
 
   def create
